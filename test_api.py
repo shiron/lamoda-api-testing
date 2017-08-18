@@ -1,7 +1,8 @@
+# coding: utf8
 import unittest
 from client_api import ClientAPI
 
-URL = 'http://apigw.lamoda.ru/json/get_product_product_recommendations'
+URL = 'http://apigw.lamoda.ru/json/'
 
 class TestGetReccomend(unittest.TestCase):
 
@@ -11,7 +12,7 @@ class TestGetReccomend(unittest.TestCase):
 
     def test_correct_sku_without_limit(self):
         """
-
+        Тест на корректный sku, без limit
         """
         status_code, response = TestGetReccomend.api.get_recommendations(sku='lo019emjgz27')
 
@@ -22,7 +23,7 @@ class TestGetReccomend(unittest.TestCase):
 
     def test_correct_sku_correct_limit(self):
         """
-
+        Тест на корректный sku и limit=2
         """
         status_code, response = TestGetReccomend.api.get_recommendations(sku='lo019emjgz27', limit=2)
         self.assertEqual(200, status_code,
@@ -32,7 +33,7 @@ class TestGetReccomend(unittest.TestCase):
 
     def test_wrong_sku(self):
         """
-
+        Тест на некорректный sku
         """
         status_code, response = TestGetReccomend.api.get_recommendations(sku='0_0')
         self.assertEqual(400, status_code,
@@ -44,7 +45,7 @@ class TestGetReccomend(unittest.TestCase):
 
     def test_wrong_limit(self):
         """
-
+        Тест на некорректное значение limit
         """
         status_code, response = TestGetReccomend.api.get_recommendations(sku='lo019emjgz27', limit=-1)
         self.assertEqual(400, status_code,
