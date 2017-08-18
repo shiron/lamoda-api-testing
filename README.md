@@ -1,0 +1,1 @@
+# lamoda-api-testing
